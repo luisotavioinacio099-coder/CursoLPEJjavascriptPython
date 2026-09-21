@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04 Exercício - Pedido da Bebida</title>
+    <link rel="stylesheet" type="text/css" href="../../style.css">
+</head>
+<body>
+    <header class="header-main">
+        <h1>Agência de programação com Javascript - Nativo</h1>
+    </header>
+    <main class="main-content">
+        <h2>Pedido de bebida</h2>
+        <p id="msg_resultado"></p>
+        <button type="button" id="btn_bebida" class="btn success">Escolher Bebida</button>
+    </main>
+    <script>
+        const btnBebida = document.getElementById("btn_bebida");
+        const msgResultado = document.getElementById("msg_resultado");
+
+        btnBebida.addEventListener("click", () => {
+            let bebida = '';
+
+            do {
+                bebida = prompt("Escolha uma bebida: Café, Suco, Chá");
+                
+                if(bebida) {
+                    // Converte para minúsculo para comparação e capitaliza para exibição
+                    let bebidaLower = bebida.toLowerCase();
+                    
+                    if(bebidaLower === 'café' || bebidaLower === 'cafe' || 
+                       bebidaLower === 'suco' || bebidaLower === 'chá' || 
+                       bebidaLower === 'cha') {
+                        
+                        let bebidaDisplay = bebidaLower === 'café' || bebidaLower === 'cafe' ? 'Café' :
+                                           bebidaLower === 'suco' ? 'Suco' : 'Chá';
+                        
+                        alert("Você escolheu: " + bebidaDisplay);
+                        msgResultado.innerHTML = `🍹 Você escolheu: ${bebidaDisplay}! 🍹`;
+                        break;
+                    } else {
+                        alert("Opção inválida! Escolha entre: Café, Suco ou Chá");
+                    }
+                } else {
+                    alert("Por favor, escolha uma bebida!");
+                    break;
+                }
+            } while(true);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 Exércicio Condicionais</title>
+</head>
+<body>
+    <input type="number" id="peso" placeholder="Peso (kg)">
+<input type="number" id="altura" placeholder="Altura (m)">
+<button id="calcular">Calcular IMC</button>
+<p id="resultadoImc"></p>
+
+<script>
+  document.getElementById("calcular").addEventListener("click", function() {
+    let peso = parseFloat(document.getElementById("peso").value);
+    let altura = parseFloat(document.getElementById("altura").value);
+    
+    let imc = peso / (altura * altura);
+    let resultadoTexto = `IMC: ${imc.toFixed(2)} - `;
+    let cor = "";
+    
+    if (imc < 18.5) {
+      resultadoTexto += "Abaixo do peso";
+      cor = "orange";
+    } else if (imc < 25) {
+      resultadoTexto += "Peso normal";
+      cor = "green";
+    } else if (imc < 30) {
+      resultadoTexto += "Sobrepeso";
+      cor = "gray";
+    } else {
+      resultadoTexto += "Obesidade";
+      cor = "red";
+    }
+    
+    let p = document.getElementById("resultadoImc");
+    p.textContent = resultadoTexto;
+    p.style.color = cor;
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css">
+    <title>6ª Exercício</title>
+</head>
+<body>
+    <header class="header-main">
+        <h1>Introdução ao Javascript Nativo.</h1>
+        <br>
+        <a href="../index.html" title="Clique para voltar!" class="link-voltar">Voltar para o Início</a>
+    </header>
+
+    <main class="main-content">
+        <h2>6º Exercício Prático.</h2>
+
+        <div class="module-list">
+            <button type="submit" class="btn success" onclick="somarValoresComParametros(10.5)">Mostrar</button>
+        </div>
+    </main>
+
+    <script>
+        function somarValoresComParametros(valor_numerico){
+            let soma = (valor_numerico + 20.5)
+
+            alert("Soma de " + valor_numerico + " + 20.5 = " + soma)
+        }
+    </script>
+</body>
+</html>

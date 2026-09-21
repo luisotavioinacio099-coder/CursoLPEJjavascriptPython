@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 exemplo laço de repetição FOR</title>
+</head>
+
+<body>
+    <header class="header-main">
+        <h1>Logicá de programação com javascript nativo</h1>
+    </header>
+
+    <main class="main-content">
+        <h1>1 exemplo de laço de reptição</h1>
+
+        <div class="form-group">
+            <label for="frase">Digite uma frase:</label>
+            <input type="text" id="frase" placeholder="digite sua frase aqui"...>
+        </div>
+
+        <div class="form-group">
+            <label for="repeticao">quantidade de repetição</label>
+            <input type="text " id="repeticao" placeholder="digite a quantidade de repetição">
+        </div>
+
+        <p id="msg_for"></p>
+
+        <button type="button" id="btn_repetir" class="btn success">executar repetiçao</button>
+    </main>
+
+    <script>
+        const btn_repetir = document.getElementById("btn_repetir")
+        const msg_for = document.getElementById("msg_for")
+
+        btn_repetir.addEventListener("click", () => {
+            const frase = document.getElementById("frase").value
+            const repeticao = document.getElementById("repeticao").value
+
+            if(isNaN(repeticao) || repeticao <= 0){
+                msg_for.innerHTML = "digite apenas caracteres numericos mais que 0!"
+                return
+            }else{
+                let resultado_final = ""
+                for(i = 1; i <= repeticao; 1++){
+                resultado_final += `${farse} - Pos: ${i}<br>    `
+                }
+                msg_for.innerHTML = resultado_final
+            }   
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3E Exemplo - Laco de Repetição WHILE (Jogo do Numero)</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+    <header class="header_main">
+        <h1>Lógica de programação com Javascript</h1>
+    </header>
+
+    <main class="main-content">
+        <h2>3E Exemplo - WHILE - Jogo do Número Secreto</h2>
+
+        <p>Intenta adivinhar o número secreto entre 1 e 10.</p>
+
+        <p id="msg_while"></p>
+
+        <button type="button" id="btn_repetir" class="btn success">Iniciar o Game</button>
+    </main>
+
+    <script>
+        // Valor para acertar o Game!
+        const numero_secreto_ok = 7;
+        const max_tentativas = 3;
+
+        const btnRepetir = document.getElementById("btn_repetir");
+        const msg_while = document.getElementById("msg_while");
+
+        btnRepetir.addEventListener("click", () => {
+            let contador_tentativas = 0;
+            let palpites = 0;
+            let acertou = false;
+
+            while(contador_tentativas < max_tentativas && !acertou) {
+                palpites = parseInt(prompt(`Digite um NÚMERO entre 1 e 10 (Tentativa ${contador_tentativas + 1} de ${max_tentativas}): `));
+                
+                if(isNaN(palpites) || palpites < 1 || palpites > 10) {
+                    alert("Por favor, digite um número válido entre 1 e 10!");
+                    continue;
+                }
+
+                if(palpites === numero_secreto_ok) {
+                    acertou = true;
+                    msg_while.innerHTML = `🎉 PARABÉNS!! Você acertou o número secreto (${numero_secreto_ok})! 🎉<br>Tentativas usadas: ${contador_tentativas + 1}`;
+                } else {
+                    alert(`ERROU: Tente Novamente!!! (Você digitou ${palpites})`);
+                    contador_tentativas++;
+                }
+            }
+
+            if(!acertou && contador_tentativas >= max_tentativas) {
+                msg_while.innerHTML = `😢 GAME OVER! Você não acertou o número secreto (${numero_secreto_ok}) em ${max_tentativas} tentativas. 😢`;
+            }
+        });
+    </script>
+</body>
+</html>

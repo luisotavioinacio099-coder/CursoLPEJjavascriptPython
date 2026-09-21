@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 1 - Média Ponderada</title>
+</head>
+
+<body style="font-family: Tahoma;">
+    <h1>Calcular Média Ponderada:</h1>
+    <p>
+        <div>
+            <label for="nota1">Digite a Nota 1:</label>
+            <input type="text" id="nota1">
+        </div>
+    </p>
+    <p>
+        <div>
+            <label for="peso1">Digite o Peso 1:</label>
+            <input type="text" id="peso1">
+        </div>
+    </p>
+    <br>
+    <p>
+        <div>
+            <label for="nota2">Digite a Nota 2:</label>
+            <input type="text" id="nota2">
+        </div>
+    </p>
+    <p>
+        <div>
+            <label for="peso2">Digite o Peso 2:</label>
+            <input type="text" id="peso2">
+        </div>
+    </p>
+    <br>
+        <p>
+            <div>
+                <label for="nota3">Digite a Nota 3:</label>
+                <input type="text" id="nota3">
+            </div>
+        </p>
+        <p>
+            <div>
+                <label for="peso3">Digite o Peso 3:</label>
+                <input type="text" id="peso3">
+            </div>
+        </p>
+    <br>
+    
+    <button type="button" id="btn_calcular">Calcular Média Ponderada</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        const btn_calcular = document.getElementById("btn_calcular")
+
+        btn_calcular.addEventListener("click", () => {
+            const nota1 = Number(document.getElementById("nota1").value)
+            const peso1 = Number(document.getElementById("peso1").value)
+
+            const nota2 = Number(document.getElementById("nota2").value)
+            const peso2 = Number(document.getElementById("peso2").value)
+
+            const nota3 = Number(document.getElementById("nota3").value)
+            const peso3 = Number(document.getElementById("peso3").value)
+
+            const dados = {
+                nota1: nota1,
+                peso1: peso1,
+                nota2: nota2,
+                peso2: peso2,
+                nota3: nota3,
+                peso3: peso3
+            }
+            fetch("http://localhost:5004/calculo_media_ponderada", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dados)
+            })
+            .then(resposta => resposta.json())
+            .then(resultado => {
+                document.getElementById("resultado").innerHTML = `Média Ponderada: ${resultado.media_ponderada}`
+            })
+            .catch(erro => {
+                alert(`Ocorreu um erro: ${erro}`)
+            })
+        })
+    </script>
+</body>
+</html>

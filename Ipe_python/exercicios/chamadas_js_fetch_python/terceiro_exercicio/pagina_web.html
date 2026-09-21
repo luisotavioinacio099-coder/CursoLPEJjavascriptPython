@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Exercício 3 - Juros Simples</title>
+</head>
+
+<body>
+
+    <h1>Calcular Juros Simples</h1>
+
+    <div>
+        <label for="capital">
+            Digite o Capital Inicial:
+        </label>
+
+        <input type="text" id="capital" placeholder="Digite aqui...">
+    </div>
+
+    <br>
+
+    <div>
+        <label for="taxa">
+            Digite a Taxa de Juros:
+        </label>
+
+        <input type="text" id="taxa" placeholder="Digite aqui...">
+    </div>
+
+    <br>
+
+    <div>
+        <label for="tempo">
+            Digite o Tempo em Meses:
+        </label>
+
+        <input type="text" id="tempo" placeholder="Digite aqui...">
+    </div>
+
+    <br>
+
+    <button type="button" id="btn_calcular">
+        Calcular Juros
+    </button>
+
+
+    <script>
+
+        const btn_calcular = document.getElementById("btn_calcular")
+
+        btn_calcular.addEventListener("click", () => {
+
+            const capital = Number(
+                document.getElementById("capital").value
+            )
+
+            const taxa = Number(
+                document.getElementById("taxa").value
+            )
+
+            const tempo = Number(
+                document.getElementById("tempo").value
+            )
+
+
+            const dados = {
+                capital: capital,
+                taxa: taxa,
+                tempo: tempo
+            }
+
+
+            fetch("http://localhost:5000/calcular_juros_simples", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(dados)
+
+            })
+
+            .then(resposta => resposta.json())
+
+            .then(resultado => {
+
+                alert(`Valor dos Juros: R$ ${resultado.juros}`)
+
+            })
+
+            .catch(erro => {
+
+                alert(`Ocorreu um erro: ${erro}`)
+
+            })
+
+        })
+
+    </script>
+
+</body>
+
+</html>

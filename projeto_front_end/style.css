@@ -1,0 +1,144 @@
+/* FORMATAÇÃO por TAGs HTML! */
+body{
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    font-family: Tahoma;
+}
+
+summary{
+    background-color: #000031;
+    color: #ffffff;
+    padding: 6px;
+    border-radius: 6px;
+}
+
+details p{
+    background-color: #ffffff;
+    color: #000031;
+    padding: 6px;
+    border-radius: 6px;
+    text-align: justify;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    margin-bottom: 5px;
+}
+
+/* FORMATAÇÃO por IDs! */
+#top{
+    background-color: #000031;
+    color: #ffffff;
+    padding: 34px 0px;
+    text-align: center;
+}
+
+#containers{
+    background-color: #c0c0c0;
+    padding-bottom: 16px;
+}
+
+#end{
+    background-color: #000031;
+    color: #ffffff;
+    padding: 20px 0px;
+    text-align: center;  
+    font-size: 12px;
+}
+
+/* FORMATAÇÃO por class! */
+.info-curso{
+    display: grid;
+    justify-content: center;
+}
+
+.box-title,
+.box-info-1,
+.box-info-2{
+    margin: 16px;
+    background-color: #6c6c6c;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px #000000;
+}
+
+.img-banner{
+    width: 100%;
+    margin: 0px;
+    transition: 3s;
+    padding-bottom: 26px;
+}
+
+.img-banner:hover{
+    transform: scale(1.05);
+}
+
+.box-layout-info{
+    display: grid;
+    gap: 50px;
+}
+
+.box-info-1{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.box-info{
+    padding: 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.camp-form{
+    height: 34px;
+    outline: none;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-family: Tahoma;
+    color:#2d2d2d;
+    font-size: 12px;
+}
+
+.camp-form-obs{
+    height: 90px;
+    outline: none;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-family: Tahoma;
+    color:#6c6c6c;
+    font-size: 12px;
+}
+
+.btn-cadastrar{
+    background-color: #001c00;
+    color: #ffffff;
+    padding: 10px ;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-cadastrar:hover{
+    background-color: #003b00;
+}
+
+.btn-cadastrar:active{
+    background-color: #e5ff00;
+    color: #000000;
+}
+
+/* Função Nativa CSS para Responsividade (Mobile)! */
+@media screen and (max-width: 768px) {
+    .box-info{
+        padding: 36px;
+        display: flex;
+        flex-direction: column;
+    }
+}

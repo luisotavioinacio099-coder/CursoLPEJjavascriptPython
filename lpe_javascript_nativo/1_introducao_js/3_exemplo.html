@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funções em Javascript Nativo</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header class="header-main">
+        <a href="./index.html">
+            <h1>Voltar a Introdução ao Javascript Nativo.</h1>
+        </a>
+    </header>
+
+    <main class="main-content">
+        <h2>3º Exemplo: Funções em Javascript Nativo</h2>
+
+        <div class="module-list">
+           <button type="submit" class="btn success" onclick="MostrarMensagem()">Clique para Executar</button>
+        </div>
+
+        <hr>
+
+        <div class="module-group">
+            <label for="selecionar_item">Selecione algum item da combo:</label>
+            <select id="selecionar_item" onchange="ItemSelecionado(this.value)">
+                <option value="VAZIO - Selecione um outro item!">Selecione</option>
+                <option value="opt - A">Itam A</option>
+                <option value="opt - B">Itam B</option>
+            </select>
+        </div>
+    </main> 
+    
+    <!-- Área de desenvolvimento em Javascript! -->
+    <script>
+
+        // Parâmetro de functions: Passagem de valores!
+
+        // Ação de execução por botão HTML!
+        function MostrarMensagem(){
+            alert("Olá. Você clicou no botão!")
+        }
+
+        // Ação de identificar o que foi selecionado no HTML!
+        function ItemSelecionado(item_select){
+            alert("Você selecionou/mudou de item: \n" + item_select)
+        }
+
+    </script>
+</body>
+</html>

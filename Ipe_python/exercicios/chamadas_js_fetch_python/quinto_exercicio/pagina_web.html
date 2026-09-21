@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Exercício 5 - Dividir Conta</title>
+</head>
+
+<body>
+
+    <h1>Dividir a Conta entre Amigos</h1>
+
+    <div>
+        <label for="valor_total">
+            Digite o Valor Total da Conta:
+        </label>
+
+        <input
+            type="text"
+            id="valor_total"
+            placeholder="Digite aqui..."
+        >
+    </div>
+
+    <br>
+
+    <div>
+        <label for="numero_de_pessoas">
+            Digite o Número de Pessoas:
+        </label>
+
+        <input
+            type="text"
+            id="numero_de_pessoas"
+            placeholder="Digite aqui..."
+        >
+    </div>
+
+    <br>
+
+    <button type="button" id="btn_dividir">
+        Dividir Conta
+    </button>
+
+
+    <script>
+
+        const btn_dividir = document.getElementById("btn_dividir")
+
+
+        btn_dividir.addEventListener("click", () => {
+
+            // Capturando os valores dos campos.
+            const valor_total = Number(
+                document.getElementById("valor_total").value
+            )
+
+            const numero_de_pessoas = Number(
+                document.getElementById("numero_de_pessoas").value
+            )
+
+
+            // Criando o objeto com os dados.
+            const dados = {
+
+                valor_total: valor_total,
+                numero_de_pessoas: numero_de_pessoas
+
+            }
+
+
+            // Consumindo o endpoint do Python.
+            fetch("http://localhost:5000/dividir_conta", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(dados)
+
+            })
+
+            // Convertendo a resposta para JSON.
+            .then(resposta => resposta.json())
+
+            // Recebendo o resultado do Python.
+            .then(resultado => {
+
+                alert(
+                    `Valor por Pessoa: R$ ${resultado.valor_por_pessoa.toFixed(2)}`
+                )
+
+            })
+
+            // Tratamento de erro.
+            .catch(erro => {
+
+                alert(`Ocorreu um erro: ${erro}`)
+
+            })
+
+        })
+
+    </script>
+
+</body>
+
+</html>

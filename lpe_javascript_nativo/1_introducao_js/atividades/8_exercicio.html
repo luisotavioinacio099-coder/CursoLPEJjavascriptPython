@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css">
+    <title>8ª Exercício</title>
+</head>
+<body>
+    <header class="header-main">
+        <h1>Introdução ao Javascript Nativo.</h1>
+        <br>
+        <a href="../index.html" title="Clique para voltar!" class="link-voltar">Voltar para o Início</a>
+    </header>
+
+    <main class="main-content">
+        <h2>8º Exercício Prático.</h2>
+
+        <div class="form-group">
+            <label for="exemplo_select">Selecione uma das Opções:</label>
+            <select id="exemplo_select" onchange="selecioneAlgumDado(this.value)">
+                <option value="">Selecione</option>
+                <option value="Fácil">Fácil</option>
+                <option value="Médio">Médio</option>
+                <option value="Difícil">Difícil</option>
+            </select>
+        </div>
+    </main>
+
+    <script>
+        function selecioneAlgumDado(dificuldade){
+            alert("Você selecionou o nível de dificuldade: " + dificuldade)
+        }
+    </script>
+</body>
+</html>

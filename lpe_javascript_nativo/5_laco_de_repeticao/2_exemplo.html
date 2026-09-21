@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 Exemplo - FOREACH</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+    <header class="header main">
+        <h1>Digite a programação com Javascript Nativo</h1>
+    </header>
+
+    <main class="main-content">
+        <h2>02 Exemplo - FOREACH</h2>
+
+        <div class="form-group">
+            <label for="lista">Digite palavras separadas por vírgula:</label>
+            <input type="text" id="lista" placeholder="Ex: maca, banana, uva, laranja...">
+        </div>
+
+        <p id="msg_foreach"></p>
+
+        <button type="button" id="btn_repetir" class="btn success">Mostrar Lista</button>
+    </main>
+
+    <script>
+        // Todas Leia de Repetição Forma Próxima ser executada junto com uma Variável Array ou Objeto de Dados.
+        // Todas Variável Array e organizadas por casas numéricas, iniciando do valor 0.
+        // Variável Array salva em sua estrutura vários dados de uma única vez!
+
+        const btnRepetir = document.getElementById("btn_repetir");
+        const msg_foreach = document.getElementById("msg_foreach");
+
+        btnRepetir.addEventListener("click", () => {
+            const valor_de_entrada = document.getElementById("lista").value;
+
+            if(valor_de_entrada.trim() === "") {
+                msg_foreach.innerHTML = "Preencher o campo obrigatório!";
+                return;
+            } else {
+                // Declarando uma Variável Array para execução do ForEach.
+                const arrayDados = valor_de_entrada.split(",");
+
+                let resultado_final = "";
+
+                arrayDados.forEach((item, index) => {
+                    resultado_final += `Item ${index + 1}: ${item.trim()} <br>`;
+                });
+
+                msg_foreach.innerHTML = resultado_final;
+            }
+        });
+    </script>
+</body>
+</html>

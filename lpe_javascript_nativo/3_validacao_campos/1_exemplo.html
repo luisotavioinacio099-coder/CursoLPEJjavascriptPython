@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Exemplo - Validação de Campos</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header class="header-main">
+        <a href="../index.html">
+            <h1>Voltar para Validação de Campos.</h1>
+        </a>
+    </header>
+
+    <main class="main-content">
+        <h2>1º Exemplo - Validação de Campos em Javascript Nativo.</h2>
+        
+        <div class="form-group">
+            <label for="nome_completo">Digite seu Nome Completo:</label>
+            <input type="text" id="nome_completo" placeholder="Digite aqui...">
+        </div>
+
+        <div class="form-group">
+            <label for="email_usuario">Digite seu E-mail:</label>
+            <input type="email" id="email_usuario" placeholder="Digite aqui...">
+        </div>
+        
+        <div class="form-group">
+            <label for="idade_usuario">Digite sua Idade:</label>
+            <input type="text" id="idade_usuario" placeholder="Digite aqui...">
+        </div>        
+
+        <button type="submit" class="btn success" id="btn_validar">Validar Campos</button>
+    </main>
+
+    <!-- Sessão de Desenvolvimento Javacript no arquivo HTML! -->
+    <script>
+    
+        // Tipos de Dados e Tipos de Caracteres:
+        // string: Caracteres de texto.
+        // int: Caracteres numéricos.
+        // decimal: Caracteres decimais.
+        // float: Caracteres decimais (valores monetários).
+        // boolean: Condição de Verdadeiro ou Falso.
+
+        // Operadores Relacionais:
+        // == - Compara o valor da esquerda com o valor da direita.
+        // === (Utilizado em Linguagens Fracamente Tipadas) - Compara o valor da esquerda com o valor da direita e o seu tipo.
+
+        // 2 == 2 - True (Verdade).
+        // 2 == '2' - True (Verdade).
+        // 2 === '2' - False (Falso).
+        // 2 === 2 - True (Verdade).
+
+        // Declarando Variável para identificar o Botão!
+        const btnValidarFormulario = document.getElementById("btn_validar")
+
+        // Função restrita que sera atribuida para Botão!
+        btnValidarFormulario.addEventListener("click", () => {
+            // Declarando as Variáveis dos Campos do Formulário!
+            const campo_nome = document.getElementById("nome_completo")
+            const campo_email = document.getElementById("email_usuario")
+            const campo_idade = document.getElementById("idade_usuario")
+
+            // Declarando as Variáveis que vão receber os dados digitados nos campos!
+            const nome = campo_nome.value.trim()
+            const email = campo_email.value.trim()
+            const idade = campo_idade.value.trim()
+
+            // Montagem das condições lógicas do processamento de dados (Validação de Campos)!
+            if(nome === ""){
+                alert("Preencher o campo obrigatório NOME!")
+                campo_nome.value = ""
+                campo_nome.focus()
+            }else if(email === ""){
+                alert("Preencher o campo obrigatório E-MAIL!")
+                campo_email.value = ""
+                campo_email.focus()
+            }else if(idade === ""){
+                alert("Preencher o campo obrigatório IDADE!")
+                campo_idade.value = ""
+                campo_idade.focus()
+            }else if(isNaN(idade)){
+                alert("Digite apenas caracteres NUMÉRICOS!")
+                campo_idade.value = ""
+                campo_idade.focus()   
+            }else{
+                alert("Formulário validado com SUCESSO!")
+            }
+        })
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio Tabuada de Multiplicação</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <header class="header main">
+        <h1>Lógica de programação com Javascript Nativo</h1>
+    </header>
+    <main class="main-content">
+        <h2>Gerar Tabuada.</h2>
+        <div class="form-group">
+            <label for="numero">Digite um número:</label>
+            <input type="text" id="numero" placeholder="Digite um número...">
+        </div>
+        <p id="resp_tabuada"></p>
+        <button type="button" id="btn_gerar" class="btn success">Gerar Tabuada</button>
+    </main>
+    <script>
+        const btnGerar = document.getElementById('btn_gerar');
+        const resp_tabuada = document.getElementById('resp_tabuada');
+
+        btnGerar.addEventListener('click', () => {
+            const numero = document.getElementById('numero').value;
+
+            // Condição Logica.
+            if(isNaN(numero) || numero === "") {
+                resp_tabuada.innerHTML = "Digite apenas caracteres NUMÉRICOS!";
+                return;
+            }
+
+            // Variável Global!
+            let resultado_final = "";
+            const numConvertido = Number(numero);
+
+            for(let i = 0; i <= 10; i++) {
+                let resultado = numConvertido * i;
+                resultado_final += `${numConvertido} X ${i} = ${resultado}<br>`;
+            }
+
+            resp_tabuada.innerHTML = resultado_final;
+        });
+    </script>
+</body>
+</html>

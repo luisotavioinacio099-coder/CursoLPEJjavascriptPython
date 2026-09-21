@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Exercício 4 - Mínimo de Estoque</title>
+</head>
+
+<body>
+
+    <h1>Calcular Mínimo de Estoque</h1>
+
+    <div>
+        <label for="quantidade_minima">
+            Digite a Quantidade Mínima:
+        </label>
+
+        <input
+            type="text"
+            id="quantidade_minima"
+            placeholder="Digite aqui..."
+        >
+    </div>
+
+    <br>
+
+    <div>
+        <label for="quantidade_maxima">
+            Digite a Quantidade Máxima:
+        </label>
+
+        <input
+            type="text"
+            id="quantidade_maxima"
+            placeholder="Digite aqui..."
+        >
+    </div>
+
+    <br>
+
+    <button type="button" id="btn_calcular">
+        Calcular Estoque
+    </button>
+
+
+    <script>
+
+        const btn_calcular = document.getElementById("btn_calcular")
+
+
+        btn_calcular.addEventListener("click", () => {
+
+            // Capturando os valores dos campos.
+            const quantidade_minima = Number(
+                document.getElementById("quantidade_minima").value
+            )
+
+            const quantidade_maxima = Number(
+                document.getElementById("quantidade_maxima").value
+            )
+
+
+            // Criando o objeto com os dados.
+            const dados = {
+
+                quantidade_minima: quantidade_minima,
+                quantidade_maxima: quantidade_maxima
+
+            }
+
+
+            // Consumindo o endpoint do Python.
+            fetch("http://localhost:5000/calculo_estoque", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(dados)
+
+            })
+
+            // Convertendo a resposta para JSON.
+            .then(resposta => resposta.json())
+
+            // Recebendo o resultado do Python.
+            .then(resultado => {
+
+                alert(
+                    `Quantidade Média: ${resultado.quantidade_media}`
+                )
+
+            })
+
+            // Tratamento de erro.
+            .catch(erro => {
+
+                alert(`Ocorreu um erro: ${erro}`)
+
+            })
+
+        })
+
+    </script>
+
+</body>
+
+</html>

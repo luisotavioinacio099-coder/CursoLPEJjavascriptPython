@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4º Exercício</title>
+    <link rel="stylesheet" type="text/css" href="../../style.css">
+</head>
+
+<body>
+    <header class="header-main">
+        <a href="./index.html">
+            <h1>Voltar a Introdução ao Javascript Nativo.</h1>
+        </a>
+    </header>
+
+    <main class="main-content">
+        <div class="form-group">
+            <label for="nome_empresa">Digite o Nome da Empresa:</label>
+            <input type="text" id="nome_empresa" placeholder="Digite aqui...">
+        </div>
+        <div class="form-group">
+            <label for="cnpj_empresa">Digite o CNPJ:</label>
+            <input type="text" id="cnpj_empresa" placeholder="Digite aqui...">
+        </div>
+        <div class="form-group">
+            <label for="telefone_empresa">Digite o Telefone:</label>
+            <input type="text" id="telefone_empresa" placeholder="Digite aqui...">
+        </div>        
+        <div class="form-group">
+            <label for="funcionarios_empresa">Digite a Qtds. de Funcionários:</label>
+            <input type="text" id="funcionarios_empresa" placeholder="Digite aqui...">
+        </div>        
+        
+        <button type="submit" class="btn success" id="btn_mostrar" onclick="InformacoesDaEmpresa()">Mostrar</button>
+    </main>
+
+    <script>
+
+        const btnMostrar = document.getElementById("#btn_mostrar")
+
+        btnMostrar.addEventListener("click", InformacoesDaEmpresa)
+
+        function InformacoesDaEmpresa(){
+            const nomeEmpresa = document.querySelector("#nome_empresa").value
+            const cnpjEmpresa = document.querySelector("#cnpj_empresa").value
+            const teleEmpresa = document.querySelector("#telefone_empresa").value
+            const funcionariosEmpresa = document.querySelector("#funcionarios_empresa").value
+
+            alert(
+                "Nome da Empresa: " + nomeEmpresa + 
+                ".\nCNPJ: " + cnpjEmpresa + 
+                ".\nTelefone: " + teleEmpresa + 
+                ".\nQtd. de Funcionários: " + funcionariosEmpresa
+            )
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Exercício 2 - Conversor de Temperatura</title>
+</head>
+
+<body>
+
+    <h1>Conversor de Temperatura</h1>
+
+    <div>
+        <label for="celsius">Digite a temperatura em Celsius:</label>
+        <input type="text" id="celsius" placeholder="Digite aqui...">
+    </div>
+
+    <br>
+
+    <button type="button" id="btn_converter">
+        Converter para Fahrenheit
+    </button>
+
+    <script>
+
+        const btn_converter = document.getElementById("btn_converter")
+
+        btn_converter.addEventListener("click", () => {
+
+            // Capturando o campo.
+            const campo_celsius = document.getElementById("celsius")
+
+            // Pegando o valor digitado.
+            const celsius = Number(campo_celsius.value)
+
+            // Objeto que será enviado para o Python.
+            const dados = {
+                celsius: celsius
+            }
+
+            // Chamando o endpoint do Python.
+            fetch("http://localhost:5000/converter_temperatura", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(dados)
+
+            })
+
+            // Convertendo a resposta para JSON.
+            .then(resposta => resposta.json())
+
+            // Recebendo o resultado do Python.
+            .then(resultado => {
+
+                if (resultado.status === "erro") {
+                    alert(resultado.mensagem)
+                    return
+                }
+
+                alert(`Temperatura em Fahrenheit: ${resultado.fahrenheit}`)
+
+            })
+
+            // Tratamento de erro na comunicação.
+            .catch(erro => {
+
+                alert(`Ocorreu um erro na comunicação com o servidor: ${erro}`)
+
+            })
+
+        })
+
+    </script>
+
+</body>
+
+</html>

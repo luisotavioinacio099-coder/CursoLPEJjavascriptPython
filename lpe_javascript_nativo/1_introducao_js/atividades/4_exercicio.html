@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css">
+    <title>4ª Exercício</title>
+</head>
+<body>
+    <header class="header-main">
+        <h1>Introdução ao Javascript Nativo.</h1>
+        <br>
+        <a href="../index.html" title="Clique para voltar!" class="link-voltar">Voltar para o Início</a>
+    </header>
+
+    <main class="main-content">
+        <h2>4º Exercício Prático.</h2>
+
+        <div class="module-list">
+            <a href="" class="btn success">Mostrar a Mensagem por Javascript Nativo</a>
+        </div>
+    </main>
+
+    <script>
+
+        const nome_produto = "Placa de Vídeo"
+        let estoque_produto = 20
+        let qtd_vendida_produto = 5
+
+        alert("Nome do Produto: " + nome_produto + " - Qtds. em Estoque: " + estoque_produto + ".")
+
+        alert("Foram vendidos: " + qtd_vendida_produto + " " + nome_produto + ".")
+
+        estoque_produto = estoque_produto - qtd_vendida_produto
+
+        alert("Quantidade Total em Estoque: " + estoque_produto + " " + nome_produto + ".")
+
+    </script>
+</body>
+</html>

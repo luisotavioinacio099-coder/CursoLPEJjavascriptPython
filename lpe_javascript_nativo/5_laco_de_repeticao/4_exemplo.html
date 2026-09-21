@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4º Exemplo - Laço de Repetição DO WHILE (Jogo do Número)</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+    <header class="header-main">
+        <h1>Lógica de programação com Javascript Nativo</h1>
+    </header>
+
+    <main class="main-content">
+        <h2>4º Exemplo - DO WHILE - Jogo do Número Secreto</h2>
+
+        <p>Tente adivinhar o número secreto entre 1 e 10.</p>
+
+        <p id="msg_do_while"></p>
+
+        <button type="button" id="btn_repetir" class="btn success">Iniciar o Game</button>
+    </main>
+
+    <script>
+        // Valor para acertar o Game!
+        const numero_secreto_ok = 7;
+        const msgDoWhile = document.getElementById("msg_do_while");
+        const btnRepetir = document.getElementById("btn_repetir");
+
+        btnRepetir.addEventListener("click", () => {
+            let qtds_tentativas = 0;
+            let palpites = 0;
+
+            do {
+                palpites = parseInt(prompt("Digite um NÚMERO entre 1 e 10: "));
+                
+                // Valida se o usuário digitou um número válido
+                if(isNaN(palpites) || palpites < 1 || palpites > 10) {
+                    alert("Por favor, digite um número válido entre 1 e 10!");
+                    continue;
+                }
+                
+                qtds_tentativas++;
+                
+                if(palpites === numero_secreto_ok) {
+                    alert(`🎉 PARABÉNS! Você acertou o NÚMERO SECRETO (${numero_secreto_ok})! 🎉\nSuas tentativas foram: ${qtds_tentativas}`);
+                    msgDoWhile.innerHTML = `🎉 PARABÉNS! Você acertou o número secreto (${numero_secreto_ok})! 🎉<br>Total de tentativas: ${qtds_tentativas}`;
+                } else {
+                    if(palpites < numero_secreto_ok) {
+                        alert(`❌ ERROU: O número secreto é MAIOR que ${palpites}! Tente novamente!`);
+                    } else {
+                        alert(`❌ ERROU: O número secreto é MENOR que ${palpites}! Tente novamente!`);
+                    }
+                }
+            } while(palpites != numero_secreto_ok);
+        });
+    </script>
+</body>
+</html>

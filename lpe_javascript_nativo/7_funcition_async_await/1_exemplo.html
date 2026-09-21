@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Exemplo ASYNC/AWAIT</title>
+</head>
+<body>
+    <header>
+        <h1>Logica de programação Java Script Nativo</h1>
+    </header>
+
+    <main class="main-content">
+      
+    </main>
+
+    <button type="submit" id="bnt_iniciar" onclick="fazerPedido()" class="btn sucess">Iniciar Processos</button>
+    <p id="msg_exibir"></p>
+
+</body>
+
+<script>
+    const msg = document.getElementById("msg_exibir")
+
+    async function processarPedido() {
+        msg.innerHTML += "iniciando os preparos!</br>"
+
+        setTimeout(() => {
+            msg.innerHTML += "comida finalizada, pode entregar!<br>"
+        }, 400000)
+    }
+
+    async function inciarpedido() {
+        msg.innerHTML = "pedido em produção.<br>"
+        await processarPedido()
+        msg.innerHTML += "pedido pronto! chamar o cliente"
+    }
+
+    function fazerpedido() {
+        msg.innerHTML = "pedido em produção.<br>"
+        inciarpedido()
+        msg.innerHTML += "cliente pode retirar"
+    }
+</script>
+</html>
